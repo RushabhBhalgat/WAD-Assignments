@@ -1,0 +1,434 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --sidebar-width: 250px;
+    --topbar-height: 60px;
+    --card-bg: #ffffff;
+    --hover-color: #e8f0fe;
+    --border-color: #e0e0e0;
+}
+
+/* Dark Mode Colors */
+.dark-mode {
+    --primary-color: #64b5f6;
+    --secondary-color: #393737;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+    --hover-color: #3d3d3d;
+    --border-color: #404040;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--secondary-color);
+    border-right: 1px solid var(--border-color);
+    padding: 1rem;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.sidebar-menu li {
+    padding: 0.8rem 1rem;
+    margin: 0.3rem 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-menu li:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.02);
+}
+
+.sidebar-menu li.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    width: calc(100% - var(--sidebar-width));
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Cards */
+.stat-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.stat-card p {
+    color: #666;
+    margin: 0;
+}
+
+/* Cards and Tables */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    color: var(--text-color);
+}
+
+/* Events List */
+.events-list {
+    margin-top: 1rem;
+}
+
+.event-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.event-date {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 6px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.event-details h6 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.event-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-theme {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--border-color);
+}
+
+.btn-theme:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar-header span,
+    .sidebar-menu li span {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+}
+
+/* Welcome Section */
+.welcome-section {
+    padding: 2rem;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.welcome-section .lead {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+/* Info Cards */
+.info-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-card ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+/* Section Titles */
+.section-title {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Announcement Styles */
+.announcement-item {
+    background-color: var(--hover-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.announcement-header h5 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.announcement-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    
+    border-top: 1px solid var(--border-color);
+}
+
+.announcement-footer small {
+    color: #666;
+}
+
+.announcement-footer .actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Contact Info */
+.contact-info {
+    background-color: var(--hover-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.contact-info h5 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-info i {
+    color: var(--primary-color);
+}
+
+/* About Content */
+.about-content {
+    background-color: var(--hover-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.about-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.about-content p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Quick Access Section */
+.quick-access {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+/* Study Materials */
+.accordion-button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.list-group-item {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* Department Tabs */
+.nav-tabs {
+    border-bottom-color: var(--border-color);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-color);
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.5em 0.8em;
+}
+
+/* Dark Mode Card Styles */
+.dark-mode .card {
+    color: var(--text-color); /* Ensure text color is visible in dark mode */
+}
+
+/* Serif Font Class */
+.serif {
+    font-family: Times, "Times New Roman", Georgia, serif;
+}

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <i class="bi bi-building-fill"></i>
+                <span>Admin Panel</span>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="active" data-page="dashboard">
+                    <i class="bi bi-speedometer2"></i> Dashboard
+                </li>
+                <li data-page="students">
+                    <i class="bi bi-people"></i> Students
+                </li>
+                <li data-page="subjects">
+                    <i class="bi bi-book"></i> Subjects
+                </li>
+                <li data-page="announcements">
+                    <i class="bi bi-megaphone"></i> Announcements
+                </li>
+                <li id="logoutBtn">
+                    <i class="bi bi-box-arrow-left"></i> Logout
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <button class="btn btn-theme" id="themeToggle">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <div class="user-info">
+                    <span>Admin</span>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="Admin" class="avatar">
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="content-area" id="dashboardPage">
+                <h2>Dashboard Overview</h2>
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <i class="bi bi-people-fill"></i>
+                            <h3>2000</h3>
+                            <p>Total Students</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <i class="bi bi-person-check-fill"></i>
+                            <h3>85%</h3>
+                            <p>Attendance Rate</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <i class="bi bi-book-fill"></i>
+                            <h3>50</h3>
+                            <p>Total Subjects</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <i class="bi bi-bell-fill"></i>
+                            <h3>12</h3>
+                            <p>New Notifications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Attendance Overview</h5>
+                                <canvas id="attendanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Department Distribution</h5>
+                                <canvas id="departmentChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Students Page -->
+            <div class="content-area hidden" id="studentsPage">
+                <h2>Student Management</h2>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                            <i class="bi bi-person-plus"></i> Add Student
+                        </button>
+                        
+                        <!-- Department Tabs -->
+                        <ul class="nav nav-tabs" id="departmentTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#cse">CSE</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ece">ECE</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#me">IT</button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content mt-3">
+                            <!-- CSE Department -->
+                            <div class="tab-pane fade show active" id="cse">
+                                <h4>Computer Science Engineering</h4>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h5>Division A</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Year</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>CSE001</td>
+                                                        <td>Divya Joshi</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CSE002</td>
+                                                        <td>Rahul Patil</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Division B</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Year</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>CSE003</td>
+                                                        <td>Sania Malhotra</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CSE004</td>
+                                                        <td>Sarah Khan</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ECE Department -->
+                            <div class="tab-pane fade" id="ece">
+                                <h4>Electronics & Communication Engineering</h4>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h5>Division A</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Year</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ECE001</td>
+                                                        <td>Sania Pandey</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ECE002</td>
+                                                        <td>Lisa Jones</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Division B</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Year</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ECE003</td>
+                                                        <td>Rahul Singh</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ECE004</td>
+                                                        <td>Alia Kapoor</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ME Department -->
+                            <div class="tab-pane fade" id="me">
+                                <h4>Information Technology </h4>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h5>Division A</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Year</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ME001</td>
+                                                        <td>Jay Bhatt</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ME002</td>
+                                                        <td>Siya Roy</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Division B</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Year</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ME003</td>
+                                                        <td>Divya Jain</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ME004</td>
+                                                        <td>Om Kapoor</td>
+                                                        <td>3rd</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subjects Page -->
+            <div class="content-area hidden" id="subjectsPage">
+                <h2>Subject Management</h2>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <button class="btn btn-primary mb-3">
+                            <i class="bi bi-plus-circle"></i> Add Subject
+                        </button>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Subject Name</th>
+                                        <th>Department</th>
+                                        <th>Faculty</th>
+                                        <th>Credits</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CS301</td>
+                                        <td>Data Structures</td>
+                                        <td>CSE</td>
+                                        <td>Dr. Sarah Khan</td>
+                                        <td>4</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CS302</td>
+                                        <td>Database Management</td>
+                                        <td>CSE</td>
+                                        <td>Prof. Mitali Roy</td>
+                                        <td>4</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CS303</td>
+                                        <td>Computer Networks</td>
+                                        <td>CSE</td>
+                                        <td>Dr. Rahul Jha</td>
+                                        <td>3</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CS304</td>
+                                        <td>Operating Systems</td>
+                                        <td>CSE</td>
+                                        <td>Prof. Elizabeth Jones</td>
+                                        <td>4</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CS305</td>
+                                        <td>Software Engineering</td>
+                                        <td>CSE</td>
+                                        <td>Dr. Divya Shah</td>
+                                        <td>3</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcements Page -->
+            <div class="content-area hidden" id="announcementsPage">
+                <h2>Announcements</h2>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <button class="btn btn-primary mb-3">
+                            <i class="bi bi-plus-circle"></i> New Announcement
+                        </button>
+                        <div class="announcements-list">
+                            <div class="announcement-item">
+                                <div class="announcement-header">
+                                    <h5>Mid-term Examination Schedule</h5>
+                                    <span class="badge bg-primary">New</span>
+                                </div>
+                                <p>Mid-term examinations for all departments will be conducted from October 15th to October 25th, 2025. Detailed schedule is available on the notice board.</p>
+                                <div class="announcement-footer">
+                                    <small>Posted on: Oct 1, 2023</small>
+                                    <div class="actions">
+                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item">
+                                <div class="announcement-header">
+                                    <h5>Annual Technical Symposium</h5>
+                                </div>
+                                <p>TechFest 2025 will be held on March 5th-6th. All students are encouraged to participate and showcase their projects.</p>
+                                <div class="announcement-footer">
+                                    <small>Posted on: Feb 28, 2025</small>
+                                    <div class="actions">
+                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item">
+                                <div class="announcement-header">
+                                    <h5>Campus Recruitment Drive</h5>
+                                </div>
+                                <p>Major tech companies will be visiting our campus for recruitment from November 15th. Eligible students should register through the placement portal.</p>
+                                <div class="announcement-footer">
+                                    <small>Posted on: Jan 25, 2025</small>
+                                    <div class="actions">
+                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Add Student Modal -->
+<div class="modal fade" id="addStudentModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addStudentForm">
+                    <div class="mb-3">
+                        <label class="form-label">Student Name</label>
+                        <input type="text" id="studentName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <select id="studentDepartment" class="form-select" required>
+                            <option value="CSE">Computer Science</option>
+                            <option value="ECE">Electronics</option>
+                            <option value="ME">Mechanical Engineering</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="AIML">Artificial Intelligence & Machine Learning</option>
+                            <option value="AIDS">Artificial Intelligence & Data Science</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Year</label>
+                        <select id="studentYear" class="form-select" required>
+                            <option value="1">First Year</option>
+                            <option value="2">Second Year</option>
+                            <option value="3">Third Year</option>
+                            <option value="4">Fourth Year</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Division</label>
+                        <select id="studentDivision" class="form-select" required>
+                            <option value="A">Division A</option>
+                            <option value="B">Division B</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Student</button>
+                    <p id="addStudentMessage" class="text-success mt-2"></p> <!-- Success Message -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

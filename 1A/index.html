@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.E.S MCOE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg serif">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-building-fill"></i> 
+                P.E.S Modern College Of Engineering 
+            </a>
+            <div class="ms-auto">
+                <button class="btn btn-theme me-2" id="themeToggle">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5 serif">
+        <!-- College Overview Section -->
+        <section class="mb-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="welcome-section">
+                        <h1 class="serif">Welcome to P.E.S Modern College Of Engineering </h1>
+                        <p class="lead serif">Empowering minds, shaping futures since 1999</p>
+                        <div class="about-content mt-4 serif">
+                            <h3>About Us</h3>
+                            <p>Founded in 1999, Progressive Education Society's Modern College of Engineering has been at the forefront of technical education for over the years. Our mission is to nurture innovative minds and create future leaders in technology.</p>
+                            <div class="contact-info mt-3 serif">
+                                <h5>Contact Us</h5>
+                                <p><i class="bi bi-geo-alt"></i> 1186/A, Off J.M Road, Shivajinagar, Pune, Maharashtra, 411005</p>
+                                <p><i class="bi bi-telephone"></i> (20) 25533638,25533648</p>
+                                <p><i class="bi bi-envelope"></i> pesmcoe@moderncoe.edu.in</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="modernlogo.png" 
+                         alt="College Campus" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
+        <section class="quick-access mb-5">
+            <h2 class="section-title">Quick Access</h2>
+            <div class="row">
+                
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h4><i class="bi bi-building"></i> Departments</h4>
+                        <ul class="list-unstyled">
+                            <li>Computer Engineering</li>
+                            <li>Electrical Engineering</li>
+                            <li> Electronics & Telecommunication Engineering (E&TC)</li>
+                            <li>Information Technology</li>
+                            <li>Mechanical Engineering</li>
+                            <li>Artificial Intelligence (AI) & Data Science</li>
+                            <li>Artificial Intelligence (AI) & Machine Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h4><i class="bi bi-calendar3"></i> Academic Calendar</h4>
+                        <ul class="list-unstyled">
+                            <li>• Fall Semester: Aug 15 - Dec 20</li>
+                            <li>• Spring Semester: Jan 15 - May 20</li>
+                            <li>• Mid-terms: Oct 10-15</li>
+                            <li>• Final Exams: Dec 1-15</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="statistics mb-5">
+            <h2 class="section-title">Our Achievements</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="bi bi-people-fill"></i>
+                        <h3>2000+</h3>
+                        <p>Students</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="bi bi-person-badge"></i>
+                        <h3>150+</h3>
+                        <p>Faculty Members</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="bi bi-trophy-fill"></i>
+                        <h3>95%</h3>
+                        <p>Placement Rate</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="bi bi-award"></i>
+                        <h3>A++</h3>
+                        <p>NAAC Grade</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Placement Statistics</h5>
+                            <canvas id="placementChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Student Performance</h5>
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Role</label>
+                            <select class="form-select" id="role">
+                                <option value="admin">Admin</option>
+                                <option value="student">Student</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
